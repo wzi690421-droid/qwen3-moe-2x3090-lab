@@ -61,6 +61,7 @@ jobs:
           git add --all
           actual_tree=$(git write-tree)
           test "$actual_tree" = '93627b2e5007d06c43a76a4409c7b71cbbfa5b42'
+          git restore --source=HEAD --staged --worktree -- .github/workflows/import-materials.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'Publish verified dual RTX 3090 MoE experiment, report, and source walkthrough'
