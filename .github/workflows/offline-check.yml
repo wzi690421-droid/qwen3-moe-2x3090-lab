@@ -1,0 +1,26 @@
+name: Offline evidence checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check Python and shell syntax
+        run: |
+          python -m compileall -q scripts analysis
+          bash -n env.sh scripts/launch.sh scripts/bench_matrix.sh
+      - name: Verify archived bytes
+        working-directory: data/raw/2026-10-03
+        run: sha256sum -c SHA256SUMS
+      - name: Verify source snapshot
+        working-directory: third_party/vllm-0.30.0
+        run: sha256sum -c SHA256SUMS
+      - name: Recompute benchmark and trace summaries
+        run: python analysis/summarize_snapshot.py
