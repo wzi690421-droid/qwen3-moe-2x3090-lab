@@ -1,0 +1,67 @@
+name: Import verified experiment materials
+
+on:
+  push:
+    paths:
+      - .github/workflows/import-materials.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore the reviewed archive
+        run: |
+          python - <<'PY'
+          import hashlib
+          import zipfile
+          from pathlib import Path
+
+          archive = Path('qwen3-moe-2x3090-lab-github.zip')
+          expected = '26f228eded083a7244881b625895c345b811ed16e0d478837a6447fdf7a6e619'
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == expected
+          count = 0
+          with zipfile.ZipFile(archive) as zipped:
+              assert zipped.testzip() is None
+              for info in zipped.infolist():
+                  if info.is_dir():
+                      continue
+                  parts = Path(info.filename).parts
+                  assert parts[0] == 'qwen3-moe-2x3090-lab'
+                  assert '..' not in parts and len(parts) > 1
+                  output = Path(*parts[1:])
+                  assert not output.is_absolute() and '.git' not in output.parts
+                  output.parent.mkdir(parents=True, exist_ok=True)
+                  output.write_bytes(zipped.read(info))
+                  output.chmod(0o755 if (info.external_attr >> 16) & 0o111 else 0o644)
+                  count += 1
+          assert count == 285, count
+          archive.unlink()
+          Path('.github/workflows/import-materials.yml').unlink()
+          print('Restored 285 reviewed files')
+          PY
+      - name: Verify evidence and recompute summaries
+        run: |
+          (cd data/raw/2026-10-03 && sha256sum -c SHA256SUMS)
+          (cd third_party/vllm-0.30.0 && sha256sum -c SHA256SUMS)
+          python -m compileall -q scripts analysis
+          bash -n env.sh scripts/launch.sh scripts/bench_matrix.sh
+          python analysis/summarize_snapshot.py
+      - name: Publish exactly the reviewed tree
+        run: |
+          git add --all
+          actual_tree=$(git write-tree)
+          test "$actual_tree" = '93627b2e5007d06c43a76a4409c7b71cbbfa5b42'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Publish verified dual RTX 3090 MoE experiment, report, and source walkthrough'
+          git push origin HEAD:main
