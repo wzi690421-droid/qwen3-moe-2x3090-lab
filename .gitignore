@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venvs/
+/models/
+/.hf-home/
+.env
+.env.*
+/artifacts/
+/runs/
+*.whl
+*.zip
+*.tar.gz
+# Preserve the original evidence snapshot byte for byte.
+!/data/raw/**

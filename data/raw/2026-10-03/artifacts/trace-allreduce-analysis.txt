@@ -1,0 +1,30 @@
+
+=== TP ===
+Trace: /root/autodl-tmp/qwen3-moe-2x3090/runs/tp-nccl-profile-20261003T103620Z/traces/dp0_pp0_tp0_dcp0_ep0_rank0.1791024303917772572.pt.trace.json.gz
+GPU kernel count: 39272
+AllReduce kernel count: 3589
+GPU kernel sum: 2432.896 ms
+GPU kernel union: 2432.312 ms
+AllReduce sum: 1542.958 ms
+AllReduce union: 1542.958 ms
+AllReduce / GPU busy time: 63.44%
+AllReduce kernel latency: p50=30.945 us, p95=3499.683 us, max=4392.309 us
+Captured logical tensor shapes:
+  shape=(2048, 2048), dtype=c10::BFloat16, count=291, buffer=8.000 MiB
+  shape=(1024, 2048), dtype=c10::BFloat16, count=97, buffer=4.000 MiB
+  shape=(1037, 2048), dtype=c10::BFloat16, count=97, buffer=4.051 MiB
+
+=== EP ===
+Trace: /root/autodl-tmp/qwen3-moe-2x3090/runs/ep-nccl-profile-20261003T104909Z/traces/dp0_pp0_tp0_dcp0_ep0_rank0.1791024794939365424.pt.trace.json.gz
+GPU kernel count: 39272
+AllReduce kernel count: 3589
+GPU kernel sum: 2517.190 ms
+GPU kernel union: 2516.620 ms
+AllReduce sum: 1621.790 ms
+AllReduce union: 1621.790 ms
+AllReduce / GPU busy time: 64.44%
+AllReduce kernel latency: p50=29.417 us, p95=3807.035 us, max=5051.934 us
+Captured logical tensor shapes:
+  shape=(2048, 2048), dtype=c10::BFloat16, count=291, buffer=8.000 MiB
+  shape=(1024, 2048), dtype=c10::BFloat16, count=97, buffer=4.000 MiB
+  shape=(1037, 2048), dtype=c10::BFloat16, count=97, buffer=4.051 MiB

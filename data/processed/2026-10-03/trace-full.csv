@@ -1,0 +1,3 @@
+profile,source,kernel_count,allreduce_count,kernel_sum_ms,gpu_busy_union_ms,allreduce_union_ms,allreduce_pct_gpu_busy,forward_annotations,decode_batch8_steps
+TP,data/raw/2026-10-03/runs/tp-nccl-profile-20261003T103620Z/traces/dp0_pp0_tp0_dcp0_ep0_rank0.1791024303917772572.pt.trace.json.gz,39272,3589,2432.895667000037,2432.3116242675783,1542.958492034912,63.4358885860084,37,26
+EP,data/raw/2026-10-03/runs/ep-nccl-profile-20261003T104909Z/traces/dp0_pp0_tp0_dcp0_ep0_rank0.1791024794939365424.pt.trace.json.gz,39272,3589,2517.189754999999,2516.6200787963867,1621.7901600646974,64.44318607043554,37,26

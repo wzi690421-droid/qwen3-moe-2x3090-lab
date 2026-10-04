@@ -1,0 +1,38 @@
+{
+  "scope": "layer0 TP0 W13 only; official weights, synthetic input/routing",
+  "model_dir": "/root/autodl-tmp/qwen3-moe-2x3090/models/qwen3-30b-a3b-instruct-2507-fp8",
+  "vllm": "0.30.0",
+  "torch": "2.13.0+cu130",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "seed": 7,
+  "shape": {
+    "M": 8,
+    "N": 768,
+    "K": 2048,
+    "E": 128,
+    "topk": 8
+  },
+  "thread_k": -1,
+  "thread_n": -1,
+  "blocks_per_sm": -1,
+  "active_experts": 45,
+  "routed_rows": 64,
+  "padded_rows": 360,
+  "reference_relative_l2": 0.002277894178405404,
+  "reference_max_abs_error": 0.0012063980102539062,
+  "replay_max_abs_difference": 0.0,
+  "latency_us_per_call": [
+    88.48998260498047,
+    88.00201416015625,
+    88.09925079345703,
+    87.9349136352539,
+    88.05120086669922
+  ],
+  "median_us": 88.05120086669922,
+  "timing": {
+    "mode": "CUDA graph",
+    "nodes_per_graph": 20,
+    "replays_per_round": 100,
+    "rounds": 5
+  }
+}

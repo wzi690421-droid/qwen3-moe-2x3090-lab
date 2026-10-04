@@ -1,0 +1,27 @@
+{
+  "repo": "Qwen/Qwen3-30B-A3B-Instruct-2507-FP8",
+  "revision": "5a5a776300a41aaa681dd7ff0106608ef2bc90db",
+  "files": [
+    {
+      "path": "model-00001-of-00004.safetensors",
+      "bytes": 10001462368,
+      "sha256": "fed0a80c29eac54690eb6a39499c80aae9df06d04189479bb74b649411a9b419"
+    },
+    {
+      "path": "model-00002-of-00004.safetensors",
+      "bytes": 10000577408,
+      "sha256": "c72b1debd3bc4e55e1c6db6919e82d22de2c9d5cbd6d46f89cb1ba51b05bdc90"
+    },
+    {
+      "path": "model-00003-of-00004.safetensors",
+      "bytes": 10000577448,
+      "sha256": "84a55173edab143768a98307114b71dc51245124f116a893f310141d43bc4302"
+    },
+    {
+      "path": "model-00004-of-00004.safetensors",
+      "bytes": 1173001360,
+      "sha256": "169d89f49b646a0a8329d9a2570650f5f5a0eb78740cb1952b76caab2f21c09e"
+    }
+  ],
+  "weight_bytes": 31175618584
+}

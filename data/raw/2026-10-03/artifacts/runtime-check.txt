@@ -1,0 +1,15 @@
+Python: /root/venvs/qwen3-moe/bin/python
+vLLM: 0.30.0
+PyTorch: 2.13.0+cu130
+CUDA runtime: 13.0
+CUDA available: True
+GPU count: 2
+GPU 0 NVIDIA GeForce RTX 3090
+计算能力: (8, 6)
+BF16 矩阵乘法通过
+GPU 1 NVIDIA GeForce RTX 3090
+计算能力: (8, 6)
+BF16 矩阵乘法通过
+NCCL version: (2, 29, 7)
+P2P 0→1: False
+P2P 1→0: False

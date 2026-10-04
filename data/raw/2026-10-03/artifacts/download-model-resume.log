@@ -1,0 +1,44 @@
+Weight payload: 29.03 GiB
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]Fetching 11 files:  73%|███████▎  | 8/11 [00:00<00:00,  8.71it/s]Fetching 11 files:  82%|████████▏ | 9/11 [00:01<00:00,  5.50it/s]Fetching 11 files:  82%|████████▏ | 9/11 [00:02<00:00,  3.10it/s]
+Traceback (most recent call last):
+  File "/root/autodl-tmp/qwen3-moe-2x3090/scripts/download_model.py", line 71, in <module>
+    main()
+  File "/root/autodl-tmp/qwen3-moe-2x3090/scripts/download_model.py", line 48, in main
+    snapshot_download(repo_id=repo, revision=revision, local_dir=model_dir,
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 266, in _inner
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/_snapshot_download.py", line 532, in snapshot_download
+    hf_thread_map(
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/utils/tqdm.py", line 441, in hf_thread_map
+    results[future_to_index[future]] = future.result()
+                                       ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/_snapshot_download.py", line 512, in _inner_hf_hub_download
+    hf_hub_download(  # type: ignore
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 266, in _inner
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1026, in hf_hub_download
+    return _hf_hub_download_to_local_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1505, in _hf_hub_download_to_local_dir
+    _download_to_tmp_and_move(
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 2016, in _download_to_tmp_and_move
+    xet_get(
+  File "/root/venvs/qwen3-moe/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 589, in xet_get
+    with session.new_file_download_group(
+RuntimeError: Task error: File reconstruction error: CAS Client Error: Request error: HTTP status client error (401 Unauthorized), domain: https://cas-server.xethub.hf.co/v2/reconstructions/6aec39639a0a2d1ca966356b8c2b8426a484f80ff80731f44fa8482040713bdf

@@ -1,0 +1,22 @@
+[
+  {"id":"c01","prompt":"计算 23+19。只输出十进制整数，不要解释。","check":"exact","expected":"42"},
+  {"id":"c02","prompt":"计算 7×8。只输出十进制整数，不要解释。","check":"exact","expected":"56"},
+  {"id":"c03","prompt":"从 -3、0、2 中选出最小值。只输出这个整数。","check":"exact","expected":"-3"},
+  {"id":"c04","prompt":"把数组 [3,1,2] 升序排列。只输出 JSON 数组。","check":"json","expected":[1,2,3]},
+  {"id":"c05","prompt":"从 5、2、9 中选出最大值。只输出这个整数。","check":"exact","expected":"9"},
+  {"id":"c06","prompt":"原样复制下面三个字母，只输出这三个字母：abc","check":"exact","expected":"abc"},
+  {"id":"c07","prompt":"What is the capital of France? Output only its English name.","check":"exact","expected":"Paris"},
+  {"id":"c08","prompt":"只输出一个 JSON 对象，包含唯一键 value，值为整数 7。","check":"json","expected":{"value":7}},
+  {"id":"c09","prompt":"数组 [10,20,30,40] 有多少个元素？只输出这个整数。","check":"exact","expected":"4"},
+  {"id":"c10","prompt":"只输出一个 JSON 布尔值：false。","check":"json","expected":false},
+  {"id":"c11","prompt":"用三句话解释 MoE 的总参数量与激活参数量有什么区别。","check":"manual"},
+  {"id":"c12","prompt":"用三句话解释为什么增大推理并发通常提升总吞吐，却可能提高延迟。","check":"manual"},
+  {"id":"c13","prompt":"写一个 Python 函数，判断字符串是否为回文。给出空字符串和 abba 的测试。","check":"manual"},
+  {"id":"c14","prompt":"下面函数有什么错误？def average(xs): return sum(xs)/len(xs)。说明如何处理空列表。","check":"manual"},
+  {"id":"c15","prompt":"Translate into English: 我们需要先固定模型版本，再比较两种并行策略。","check":"manual"},
+  {"id":"c16","prompt":"一台服务器每小时收费 8 元，使用 90 分钟。解释计算过程和总费用。","check":"manual"},
+  {"id":"c17","prompt":"总结以下事实，不添加没有给出的因果关系：实验A吞吐100 token/s，实验B吞吐110 token/s；B的P95首token延迟更高；两者运行了不同版本。","check":"manual"},
+  {"id":"c18","prompt":"把这个部署问题分成三步排查：服务健康检查正常，但客户端收到 model not found。","check":"manual"},
+  {"id":"c19","prompt":"用四句话解释 prefill 与 decode，指出它们处理的 token 数量通常有什么不同。","check":"manual"},
+  {"id":"c20","prompt":"设计一个小实验，比较两个相同长度向量相加的 Python 循环实现与 NumPy 实现。说明预热、重复和输入一致性。","check":"manual"}
+]

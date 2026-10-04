@@ -1,0 +1,10 @@
+# 在每个实验终端执行：source ./env.sh
+export LAB_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+export MODEL_ID="Qwen/Qwen3-30B-A3B-Instruct-2507-FP8"
+export MODEL_REVISION="5a5a776300a41aaa681dd7ff0106608ef2bc90db"
+export MODEL_DIR="$LAB_DIR/models/qwen3-30b-a3b-instruct-2507-fp8"
+export SERVED_MODEL="qwen3-moe"
+export SERVER_PORT="8000"
+export BASE_URL="http://127.0.0.1:$SERVER_PORT"
+export CUDA_VISIBLE_DEVICES="0,1"
+export TOKENIZERS_PARALLELISM="false"

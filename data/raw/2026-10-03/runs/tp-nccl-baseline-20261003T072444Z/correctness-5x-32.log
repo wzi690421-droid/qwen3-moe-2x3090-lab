@@ -1,0 +1,120 @@
+repeat=1 c01 error=None task=True
+repeat=1 c02 error=None task=True
+repeat=1 c03 error=None task=True
+repeat=1 c04 error=None task=True
+repeat=1 c05 error=None task=True
+repeat=1 c06 error=None task=True
+repeat=1 c07 error=None task=True
+repeat=1 c08 error=None task=True
+repeat=1 c09 error=None task=True
+repeat=1 c10 error=None task=True
+repeat=1 c11 error=None task=None
+repeat=1 c12 error=None task=None
+repeat=1 c13 error=None task=None
+repeat=1 c14 error=None task=None
+repeat=1 c15 error=None task=None
+repeat=1 c16 error=None task=None
+repeat=1 c17 error=None task=None
+repeat=1 c18 error=None task=None
+repeat=1 c19 error=None task=None
+repeat=1 c20 error=None task=None
+repeat=2 c01 error=None task=True
+repeat=2 c02 error=None task=True
+repeat=2 c03 error=None task=True
+repeat=2 c04 error=None task=True
+repeat=2 c05 error=None task=True
+repeat=2 c06 error=None task=True
+repeat=2 c07 error=None task=True
+repeat=2 c08 error=None task=True
+repeat=2 c09 error=None task=True
+repeat=2 c10 error=None task=True
+repeat=2 c11 error=None task=None
+repeat=2 c12 error=None task=None
+repeat=2 c13 error=None task=None
+repeat=2 c14 error=None task=None
+repeat=2 c15 error=None task=None
+repeat=2 c16 error=None task=None
+repeat=2 c17 error=None task=None
+repeat=2 c18 error=None task=None
+repeat=2 c19 error=None task=None
+repeat=2 c20 error=None task=None
+repeat=3 c01 error=None task=True
+repeat=3 c02 error=None task=True
+repeat=3 c03 error=None task=True
+repeat=3 c04 error=None task=True
+repeat=3 c05 error=None task=True
+repeat=3 c06 error=None task=True
+repeat=3 c07 error=None task=True
+repeat=3 c08 error=None task=True
+repeat=3 c09 error=None task=True
+repeat=3 c10 error=None task=True
+repeat=3 c11 error=None task=None
+repeat=3 c12 error=None task=None
+repeat=3 c13 error=None task=None
+repeat=3 c14 error=None task=None
+repeat=3 c15 error=None task=None
+repeat=3 c16 error=None task=None
+repeat=3 c17 error=None task=None
+repeat=3 c18 error=None task=None
+repeat=3 c19 error=None task=None
+repeat=3 c20 error=None task=None
+repeat=4 c01 error=None task=True
+repeat=4 c02 error=None task=True
+repeat=4 c03 error=None task=True
+repeat=4 c04 error=None task=True
+repeat=4 c05 error=None task=True
+repeat=4 c06 error=None task=True
+repeat=4 c07 error=None task=True
+repeat=4 c08 error=None task=True
+repeat=4 c09 error=None task=True
+repeat=4 c10 error=None task=True
+repeat=4 c11 error=None task=None
+repeat=4 c12 error=None task=None
+repeat=4 c13 error=None task=None
+repeat=4 c14 error=None task=None
+repeat=4 c15 error=None task=None
+repeat=4 c16 error=None task=None
+repeat=4 c17 error=None task=None
+repeat=4 c18 error=None task=None
+repeat=4 c19 error=None task=None
+repeat=4 c20 error=None task=None
+repeat=5 c01 error=None task=True
+repeat=5 c02 error=None task=True
+repeat=5 c03 error=None task=True
+repeat=5 c04 error=None task=True
+repeat=5 c05 error=None task=True
+repeat=5 c06 error=None task=True
+repeat=5 c07 error=None task=True
+repeat=5 c08 error=None task=True
+repeat=5 c09 error=None task=True
+repeat=5 c10 error=None task=True
+repeat=5 c11 error=None task=None
+repeat=5 c12 error=None task=None
+repeat=5 c13 error=None task=None
+repeat=5 c14 error=None task=None
+repeat=5 c15 error=None task=None
+repeat=5 c16 error=None task=None
+repeat=5 c17 error=None task=None
+repeat=5 c18 error=None task=None
+repeat=5 c19 error=None task=None
+repeat=5 c20 error=None task=None
+{
+  "api_errors": 0,
+  "cases": 20,
+  "repeats": 5,
+  "stable_cases": 19,
+  "automatic_task_checks": 50,
+  "automatic_task_failures": 0,
+  "manual_case_ids": [
+    "c11",
+    "c12",
+    "c13",
+    "c14",
+    "c15",
+    "c16",
+    "c17",
+    "c18",
+    "c19",
+    "c20"
+  ]
+}

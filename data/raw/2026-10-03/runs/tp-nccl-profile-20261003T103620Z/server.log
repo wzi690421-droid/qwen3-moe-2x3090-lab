@@ -1,0 +1,548 @@
+(APIServer pid=50448) INFO 10-03 18:36:30 [api_utils.py:347] 
+(APIServer pid=50448) INFO 10-03 18:36:30 [api_utils.py:347]        █     █     █▄   ▄█
+(APIServer pid=50448) INFO 10-03 18:36:30 [api_utils.py:347]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.30.0
+(APIServer pid=50448) INFO 10-03 18:36:30 [api_utils.py:347]   █▄█▀ █     █     █     █  model   /root/autodl-tmp/qwen3-moe-2x3090/models/qwen3-30b-a3b-instruct-2507-fp8
+(APIServer pid=50448) INFO 10-03 18:36:30 [api_utils.py:347]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=50448) INFO 10-03 18:36:30 [api_utils.py:347] 
+(APIServer pid=50448) INFO 10-03 18:36:30 [api_utils.py:286] non-default args: {'model_tag': '/root/autodl-tmp/qwen3-moe-2x3090/models/qwen3-30b-a3b-instruct-2507-fp8', 'host': '127.0.0.1', 'model': '/root/autodl-tmp/qwen3-moe-2x3090/models/qwen3-30b-a3b-instruct-2507-fp8', 'dtype': 'bfloat16', 'max_model_len': 8192, 'served_model_name': ['qwen3-moe'], 'distributed_executor_backend': 'mp', 'tensor_parallel_size': 2, 'disable_custom_all_reduce': True, 'gpu_memory_utilization': 0.85, 'enable_prefix_caching': False, 'max_num_batched_tokens': 2048, 'max_num_seqs': 8, 'enable_chunked_prefill': True, 'profiler_config': ProfilerConfig(profiler='torch', torch_profiler_dir='/root/autodl-tmp/qwen3-moe-2x3090/runs/tp-nccl-profile-20261003T103620Z/traces', proton_profiler_dir='', proton_context='shadow', proton_data='tree', proton_backend=None, proton_mode=None, proton_hook=None, proton_output_format=None, proton_graph_attribution=False, torch_profiler_with_stack=False, torch_profiler_with_flops=False, torch_profiler_use_gzip=True, torch_profiler_dump_cuda_time_total=True, torch_profiler_record_shapes=True, torch_profiler_with_memory=False, capture_torch_profiler=False, detailed_trace_annotation=False, ignore_frontend=False, delay_iterations=0, max_iterations=0, warmup_iterations=0, active_iterations=5, wait_iterations=0)}
+(APIServer pid=50448) INFO 10-03 18:36:30 [model.py:692] Resolved architecture: Qwen3MoeForCausalLM
+(APIServer pid=50448) INFO 10-03 18:36:30 [model.py:2030] Using max model len 8192
+(APIServer pid=50448) INFO 10-03 18:36:30 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['triton', 'native'])
+(APIServer pid=50448) INFO 10-03 18:36:31 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(EngineCore pid=50666) INFO 10-03 18:36:41 [core.py:123] Initializing a V1 LLM engine (v0.30.0) with config: model='/root/autodl-tmp/qwen3-moe-2x3090/models/qwen3-30b-a3b-instruct-2507-fp8', speculative_config=None, tokenizer='/root/autodl-tmp/qwen3-moe-2x3090/models/qwen3-30b-a3b-instruct-2507-fp8', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=True, quantization=fp8, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=qwen3-moe, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['+quant_fp8', 'none', '+quant_fp8'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::qwen4_exp_ple_short_conv', 'vllm::qwen4_exp_qsa_with_output', 'vllm::linear_attention', 'vllm::qwen_gdn_attention_core', 'vllm::qwen_gdn_attention_core_fused_norm_packed', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::hpc_rope_norm_forward', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [2048], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 16, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None)
+(EngineCore pid=50666) INFO 10-03 18:36:41 [multiproc_executor.py:153] DP group leader: node_rank=0, node_rank_within_dp=0, master_addr=127.0.0.1, mq_connect_ip=172.17.0.5 (local), world_size=2, local_world_size=2
+(Worker pid=50780) INFO 10-03 18:36:50 [parallel_state.py:1827] world_size=2 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_fa9111f1f6fa46dcb4582b7111850814 backend=nccl
+(Worker pid=50781) INFO 10-03 18:36:50 [parallel_state.py:1827] world_size=2 rank=1 local_rank=1 distributed_init_method=file:///tmp/vllm_dist_fa9111f1f6fa46dcb4582b7111850814 backend=nccl
+(Worker pid=50780) INFO 10-03 18:36:51 [pynccl.py:148] vLLM is using nccl==2.29.7
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Bootstrap: Using eth0:172.17.0.5<0>
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO cudaDriverVersion 13020
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO NCCL version 2.29.7+cuda13.2
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO NCCL git version stable b81d6a5a3
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO NET/IB : No device found.
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO NET/IB : Using [RO]; OOB eth0:172.17.0.5<0>
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Failed to initialize NET plugin IB
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO NET/Socket : Using [0]eth0:172.17.0.5<0>
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Initialized NET plugin Socket
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Assigned NET plugin Socket to comm
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Failed to initialize any GIN plugin
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Using network Socket
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO [Rank 0] ncclCommInitRank comm 0x115231e0 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 1000 commId 0x7abe0703f7dce2f1 - Init START
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Bootstrap timings total 0.000972 (create 0.000037, send 0.000107, recv 0.000260, ring 0.000143, delay 0.000001)
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 0 is 0-47,96-143. (GPU affinity = 0-47,96-143 ; CPU affinity = 0-191).
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO NVLS multicast support is not available on dev 0 (NVLS_NCHANNELS 0)
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO comm 0x115231e0 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Channel 00/02 : 0 1
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Channel 01/02 : 0 1
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO P2P Chunksize set to 131072
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 0
+autodl-container-b4b04ea4f2-de57e8b8:50780:51292 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 28
+autodl-container-b4b04ea4f2-de57e8b8:50780:51290 [0] NCCL INFO [Proxy Service] Device 0 CPU core 14
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Symmetric memory is not supported. cuMemEnable 1, globalGinSupport 0, globalNicFused 0 cuMemGdrSupport 0
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO CC Off, workFifoBytes 1048576
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO ncclCommInitRank comm 0x115231e0 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 1000 commId 0x7abe0703f7dce2f1 - Init COMPLETE
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Init timings - ncclautodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO cudaDriverVersion 13020
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Bootstrap: Using eth0:172.17.0.5<0>
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO NCCL version 2.29.7+cuda13.2
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO NCCL git version stable b81d6a5a3
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO NET/IB : No device found.
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO NET/IB : Using [RO]; OOB eth0:172.17.0.5<0>
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Failed to initialize NET plugin IB
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO NET/Socket : Using [0]eth0:172.17.0.5<0>
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Initialized NET plugin Socket
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Assigned NET plugin Socket to comm
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Failed to initialize any GIN plugin
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Using network Socket
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO [Rank 1] ncclCommInitRank comm 0xfda1540 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId e1000 commId 0x7abe0703f7dce2f1 - Init START
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Bootstrap timings total 0.157682 (create 0.000035, send 0.000133, recv 0.156945, ring 0.000031, delay 0.000001)
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 1 is 48-95,144-191. (GPU affinity = 48-95,144-191 ; CPU affinity = 0-191).
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO NVLS multicast support is not available on dev 1 (NVLS_NCHANNELS 0)
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO comm 0xfda1540 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO P2P Chunksize set to 131072
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 0
+autodl-container-b4b04ea4f2-de57e8b8:50781:51291 [0] NCCL INFO [Proxy Service] Device 1 CPU core 159
+autodl-container-b4b04ea4f2-de57e8b8:50781:51293 [0] NCCL INFO [Proxy Service UDS] Device 1 CPU core 50
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Symmetric memory is not supported. cuMemEnable 1, globalGinSupport 0, globalNicFused 0 cuMemGdrSupport 0
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO ncclCommInitRank comm 0xfda1540 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId e1000 commId 0x7abe0703f7dce2f1 - Init COMPLETE
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Init timings - ncclCommInitRank: rank 1 nranks 2 total 0.33 (kernels 0.15, alloc 0.01, bootstrap 0.16, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Channel 00 : 1[1] -> 0[0] via SHM/dire(Worker pid=50780) WARNING 10-03 18:36:51 [symm_mem.py:67] SymmMemCommunicator: Device capability 8.6 not supported, communicator is not available.
+(Worker pid=50781) WARNING 10-03 18:36:51 [symm_mem.py:67] SymmMemCommunicator: Device capability 8.6 not supported, communicator is not available.
+(Worker pid=50781) WARNING 10-03 18:36:51 [flashinfer_all_reduce.py:383] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+(Worker pid=50780) WARNING 10-03 18:36:51 [flashinfer_all_reduce.py:383] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+(Worker pid=50780) INFO 10-03 18:36:51 [cuda_communicator.py:318] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'tp:0' out of potential backends: ['FLASHINFER_PCIE_IPC', 'FLASHINFER', 'NCCL_SYMM_MEM', 'QUICK_REDUCE', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=50780) INFO 10-03 18:36:51 [cuda_communicator.py:318] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'ep:0' out of potential backends: ['FLASHINFER_PCIE_IPC', 'FLASHINFER', 'NCCL_SYMM_MEM', 'QUICK_REDUCE', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=50780) INFO 10-03 18:36:51 [parallel_state.py:2267] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank 0, EPLB rank N/A
+(Worker pid=50780) INFO 10-03 18:36:51 [gpu_worker.py:441] Using V2 Model Runner
+(Worker_TP0 pid=50780) INFO 10-03 18:36:53 [model_runner.py:396] Loading model from scratch...
+(Worker_TP0 pid=50780) INFO 10-03 18:36:53 [__init__.py:726] Selected MarlinFP8ScaledMMLinearKernel for Fp8LinearMethod
+(Worker_TP0 pid=50780) INFO 10-03 18:36:53 [cuda.py:538] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(Worker_TP0 pid=50780) INFO 10-03 18:36:53 [flash_attn.py:1116] Using FlashAttention version 2
+(Worker_TP0 pid=50780) INFO 10-03 18:36:53 [fp8.py:438] Using MARLIN Fp8 MoE backend out of potential backends: ['AITER', 'FLASHINFER_TRTLLM', 'FLASHINFER_CUTLASS', 'DEEPGEMM', 'TRITON', 'MARLIN', 'HUMMING', 'BATCHED_DEEPGEMM', 'BATCHED_TRITON', 'XPU', 'CPU', 'HPC'].
+(Worker_TP0 pid=50780) INFO 10-03 18:36:53 [weight_utils.py:895] Filesystem type for checkpoints: XFS. Checkpoint size: 29.03 GiB. Available RAM: 136.16 GiB.
+(Worker_TP0 pid=50780) INFO 10-03 18:36:53 [weight_utils.py:918] Auto-prefetch is disabled because the filesystem (XFS) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(Worker_TP0 pid=50780) Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+(Worker_TP0 pid=50780) Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:06<00:19,  6.59s/it]
+(Worker_TP0 pid=50780) Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:13<00:13,  6.95s/it]
+(Worker_TP0 pid=50780) Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:19<00:06,  6.39s/it]
+ct/direct
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Channel 01 : 1[1] -> 0[0] via SHM/direct/direct
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Initialized NET plugin Socket
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Assigned NET plugin Socket to comm
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Failed to initialize any GIN plugin
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Using network Socket
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO [Rank 1] ncclCommInitRank comm 0x14aef4f0 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId e1000 commId 0x27327b1b0a33113a - Init START
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Bootstrap timings total 0.000568 (create 0.000021, send 0.000066, recv 0.000285, ring 0.000035, delay 0.000000)
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 1 is 48-95,144-191. (GPU affinity = 48-95,144-191 ; CPU affinity = 48-95,144-191).
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO NVLS multicast support is not available on dev 1 (NVLS_NCHANNELS 0)
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO comm 0x14aef4f0 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO P2P Chunksize set to 131072
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 0
+autodl-container-b4b04ea4f2-de57e8b8:50781:51350 [0] NCCL INFO [Proxy Service] Device 1 CPU core 166
+autodl-container-b4b04ea4f2-de57e8b8:50781:51351 [0] NCCL INFO [Proxy Service UDS] Device 1 CPU core 152
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Symmetric memory is not supported. cuMemEnable 1, globalGinSupport 0, globalNicFused 0 cuMemGdrSupport 0
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO ncclCommInitRank comm 0x14aef4f0 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId e1000 commId 0x27327b1b0a33113a - Init COMPLETE
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Init timings - ncclCommInitRank: rank 1 nranks 2 total 0.02 (kernels 0.00, alloc 0.00, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Channel 00 : 1[1] -> 0[0] via SHM/direct/direct
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Channel 01 : 1[1] -> 0[0] via SHM/direct/direct
+autodl-container-b4b04ea4f2-de57e8b8:50781:50781 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[rank1]:[W1003 18:37:13.557221662 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.564822193 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.572810185 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.581067740 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.588810568 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.596803130 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.604931499 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.613216855 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.659181712 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.665212942 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.673212264 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.681210836 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.689213278 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.697206400 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.705441434 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.713695169 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.721664689 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.776115953 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.785220452 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.793212753 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.801208205 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.809427328 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.817647371 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.825655614 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.833670137 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.841679889 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank1]:[W1003 18:37:13.849648709 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 1 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+(Worker_TP0 pid=50780) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:19<00:00,  4.04s/it]
+(Worker_TP0 pid=50780) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:19<00:00,  4.99s/it]
+(Worker_TP0 pid=50780) 
+(Worker_TP0 pid=50780) INFO 10-03 18:37:13 [default_loader.py:430] Loading weights took 19.99 seconds
+(Worker_TP0 pid=50780) WARNING 10-03 18:37:13 [marlin_utils_fp8.py:110] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+(Worker_TP0 pid=50780) INFO 10-03 18:37:13 [fp8.py:740] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP1 pid=50781) INFO 10-03 18:37:14 [model_runner.py:428] Model loading took 14.88 GiB memory and 22.431955 seconds
+CommInitRank: rank 0 nranks 2 total 0.17 (kernels 0.15, alloc 0.00, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Channel 00 : 0[0] -> 1[1] via SHM/direct/direct
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Channel 01 : 0[0] -> 1[1] via SHM/direct/direct
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Initialized NET plugin Socket
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Assigned NET plugin Socket to comm
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Failed to initialize any GIN plugin
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Using network Socket
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO [Rank 0] ncclCommInitRank comm 0x1628a0f0 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 1000 commId 0x27327b1b0a33113a - Init START
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Bootstrap timings total 0.000566 (create 0.000021, send 0.000084, recv 0.000319, ring 0.000028, delay 0.000000)
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 0 is 0-47,96-143. (GPU affinity = 0-47,96-143 ; CPU affinity = 0-47,96-143).
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO NVLS multicast support is not available on dev 0 (NVLS_NCHANNELS 0)
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO comm 0x1628a0f0 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Channel 00/02 : 0 1
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Channel 01/02 : 0 1
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO P2P Chunksize set to 131072
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0 isAllCudaP2p 0
+autodl-container-b4b04ea4f2-de57e8b8:50780:51349 [0] NCCL INFO [Proxy Service] Device 0 CPU core 37
+autodl-container-b4b04ea4f2-de57e8b8:50780:51352 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 114
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Symmetric memory is not supported. cuMemEnable 1, globalGinSupport 0, globalNicFused 0 cuMemGdrSupport 0
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO CC Off, workFifoBytes 1048576
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO ncclCommInitRank comm 0x1628a0f0 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 1000 commId 0x27327b1b0a33113a - Init COMPLETE
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Init timings - ncclCommInitRank: rank 0 nranks 2 total 0.02 (kernels 0.00, alloc 0.00, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Channel 00 : 0[0] -> 1[1] via SHM/direct/direct
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Channel 01 : 0[0] -> 1[1] via SHM/direct/direct
+autodl-container-b4b04ea4f2-de57e8b8:50780:50780 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[rank0]:[W1003 18:37:14.414001545 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:14.420831645 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:14.428833456 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:14.436830046 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:14.444858088 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:14.452824537 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.460838857 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.469227556 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.515673562 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.521257508 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.529370742 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.539258598 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.545930259 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.556106030 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.568733316 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.579938899 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.589721809 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.647606430 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.653249839 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.661222316 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.669214555 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.677222795 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.685404343 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.693645165 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.701645444 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.709666644 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+[rank0]:[W1003 18:37:15.717644402 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 11599872, total: 25298141184).
+(Worker_TP0 pid=50780) INFO 10-03 18:37:16 [model_runner.py:428] Model loading took 14.88 GiB memory and 24.173135 seconds
+(Worker_TP0 pid=50780) INFO 10-03 18:37:16 [topk_topp_sampler.py:78] Using FlashInfer for top-p & top-k sampling.
+(EngineCore pid=50666) WARNING 10-03 18:37:16 [torch_utils.py:275] OMP_NUM_THREADS=40 is set; leaving Torch threads at 40 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.
+(EngineCore pid=50666) INFO 10-03 18:37:16 [utils.py:320] Using LBNHC KV cache layout.
+(Worker_TP0 pid=50780) INFO 10-03 18:37:17 [caching.py:343] reconstructed serializable fn from standalone compile artifacts. num_artifacts=3 num_submods=49
+(Worker_TP1 pid=50781) INFO 10-03 18:37:17 [caching.py:343] reconstructed serializable fn from standalone compile artifacts. num_artifacts=3 num_submods=49
+(Worker_TP0 pid=50780) INFO 10-03 18:37:17 [decorators.py:313] Directly load AOT compilation from path /root/.cache/vllm/torch_compile_cache/torch_aot_compile/0827439219317a16e62ae94d12d41f5b91584779a0ff3e3e233f0c70858840c9/rank_0_0/model
+(Worker_TP0 pid=50780) INFO 10-03 18:37:17 [monitor.py:53] torch.compile took 0.26 s in total
+(Worker_TP1 pid=50781) INFO 10-03 18:37:17 [decorators.py:313] Directly load AOT compilation from path /root/.cache/vllm/torch_compile_cache/torch_aot_compile/0827439219317a16e62ae94d12d41f5b91584779a0ff3e3e233f0c70858840c9/rank_1_0/model
+(Worker_TP0 pid=50780) INFO 10-03 18:37:17 [monitor.py:81] Initial profiling/warmup run took 0.21 s
+(Worker_TP0 pid=50780) Capturing CUDA graphs (PIECEWISE):   0%|          | 0/5 [00:00<?, ?it/s]Capturing CUDA graphs (PIECEWISE):  20%|██        | 1/5 [00:00<00:01,  3.72it/s]Capturing CUDA graphs (PIECEWISE):  40%|████      | 2/5 [00:00<00:00,  5.51it/s]Capturing CUDA graphs (PIECEWISE):  60%|██████    | 3/5 [00:00<00:00,  6.64it/s]Capturing CUDA graphs (PIECEWISE):  80%|████████  | 4/5 [00:00<00:00,  7.25it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 5/5 [00:00<00:00,  7.57it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 5/5 [00:00<00:00,  6.73it/s]
+(Worker_TP0 pid=50780) Capturing CUDA graphs (FULL):   0%|          | 0/2 [00:00<?, ?it/s]Capturing CUDA graphs (FULL):  50%|█████     | 1/2 [00:00<00:00,  8.95it/s]Capturing CUDA graphs (FULL): 100%|██████████| 2/2 [00:00<00:00,  9.30it/s]Capturing CUDA graphs (FULL): 100%|██████████| 2/2 [00:00<00:00,  9.23it/s]
+(Worker_TP1 pid=50781) INFO 10-03 18:37:20 [model_runner.py:1066] Graph capturing finished in 2 secs, took 0.13 GiB
+(Worker_TP0 pid=50780) INFO 10-03 18:37:20 [model_runner.py:1066] Graph capturing finished in 2 secs, took 0.13 GiB
+(Worker_TP1 pid=50781) INFO 10-03 18:37:21 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.8500 is equivalent to --gpu-memory-utilization=0.8437 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8563. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP0 pid=50780) INFO 10-03 18:37:21 [gpu_worker.py:640] Available KV cache memory: 4.75 GiB
+(Worker_TP0 pid=50780) INFO 10-03 18:37:21 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.8500 is equivalent to --gpu-memory-utilization=0.8437 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8563. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=50666) INFO 10-03 18:37:21 [kv_cache_utils.py:2395] GPU KV cache size: 103,760 tokens, Maximum concurrency for 8,192 tokens per request: 12.67x
+(Worker_TP1 pid=50781) INFO 10-03 18:37:21 [kernel_warmup.py:172] JIT kernel warmup starting.
+(Worker_TP1 pid=50781) INFO 10-03 18:37:21 [kernel_warmup.py:185] JIT kernel warmup finished in 0.00s.
+(Worker_TP0 pid=50780) INFO 10-03 18:37:21 [kernel_warmup.py:172] JIT kernel warmup starting.
+(Worker_TP0 pid=50780) INFO 10-03 18:37:21 [kernel_warmup.py:185] JIT kernel warmup finished in 0.00s.
+(Worker_TP0 pid=50780) Capturing CUDA graphs (PIECEWISE):   0%|          | 0/5 [00:00<?, ?it/s]Capturing CUDA graphs (PIECEWISE):  20%|██        | 1/5 [00:00<00:00,  6.41it/s]Capturing CUDA graphs (PIECEWISE):  40%|████      | 2/5 [00:00<00:00,  7.82it/s]Capturing CUDA graphs (PIECEWISE):  60%|██████    | 3/5 [00:00<00:00,  8.43it/s]Capturing CUDA graphs (PIECEWISE):  80%|████████  | 4/5 [00:00<00:00,  8.68it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 5/5 [00:00<00:00,  8.98it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 5/5 [00:00<00:00,  8.53it/s]
+(Worker_TP0 pid=50780) Capturing CUDA graphs (FULL):   0%|          | 0/4 [00:00<?, ?it/s]Capturing CUDA graphs (FULL):  50%|█████     | 2/4 [00:00<00:00, 10.25it/s]Capturing CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00, 10.22it/s]Capturing CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00, 10.22it/s]
+(Worker_TP0 pid=50780) INFO 10-03 18:37:23 [model_runner.py:1066] Graph capturing finished in 2 secs, took 0.06 GiB
+(Worker_TP0 pid=50780) INFO 10-03 18:37:23 [gpu_worker.py:825] CUDA graph pool memory: 0.06 GiB (actual), 0.15 GiB (estimated), difference: 0.09 GiB (145.2%).
+(Worker_TP0 pid=50780) INFO 10-03 18:37:23 [gpu_worker.py:888] Free memory on device (23.13/23.56 GiB) on startup. Desired GPU memory utilization is (0.85, 20.03 GiB). Actual usage is 15.06 GiB for consumed memory (weights + non-torch), 0.22 GiB for peak activation, and 0.06 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=4878013031` (4.54 GiB) to fit into requested memory, or `--kv-cache-memory=8205986816` (7.64 GiB) to fully utilize gpu memory. Current kv cache memory in use is 4.75 GiB.
+(Worker_TP1 pid=50781) INFO 10-03 18:37:23 [model_runner.py:1066] Graph capturing finished in 2 secs, took 0.06 GiB
+(Worker_TP1 pid=50781) INFO 10-03 18:37:23 [gpu_worker.py:825] CUDA graph pool memory: 0.06 GiB (actual), 0.15 GiB (estimated), difference: 0.09 GiB (145.2%).
+(Worker_TP1 pid=50781) INFO 10-03 18:37:23 [gpu_worker.py:888] Free memory on device (23.13/23.56 GiB) on startup. Desired GPU memory utilization is (0.85, 20.03 GiB). Actual usage is 15.06 GiB for consumed memory (weights + non-torch), 0.22 GiB for peak activation, and 0.06 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=4878013031` (4.54 GiB) to fit into requested memory, or `--kv-cache-memory=8205986816` (7.64 GiB) to fully utilize gpu memory. Current kv cache memory in use is 4.75 GiB.
+(Worker_TP0 pid=50780) INFO 10-03 18:37:24 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP1 pid=50781) INFO 10-03 18:37:24 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP0 pid=50780) WARNING 10-03 18:37:24 [torch_utils.py:275] OMP_NUM_THREADS=40 is set; leaving Torch threads at 40 for serving. Multi-threaded torch CPU ops during serving can degrade performance through spin-wait contention and cgroup CPU-quota throttling.
+(EngineCore pid=50666) INFO 10-03 18:37:24 [core.py:372] init engine (profile, create kv cache, warmup model) took 8.07 s (compilation: 0.26 s)
+(EngineCore pid=50666) INFO 10-03 18:37:25 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['triton', 'native'])
+(APIServer pid=50448) INFO 10-03 18:37:25 [async_llm.py:208] Torch profiler enabled. AsyncLLM CPU traces will be collected under /root/autodl-tmp/qwen3-moe-2x3090/runs/tp-nccl-profile-20261003T103620Z/traces
+(APIServer pid=50448) INFO 10-03 18:37:25 [wrapper.py:202] Torch profiling enabled. Traces will be saved to: /root/autodl-tmp/qwen3-moe-2x3090/runs/tp-nccl-profile-20261003T103620Z/traces
+(EngineCore pid=50666) INFO 10-03 18:37:25 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=50448) INFO 10-03 18:37:25 [entry.py:135] Supported tasks: ['generate']
+(APIServer pid=50448) WARNING 10-03 18:37:25 [api_router.py:41] Profiler with mode 'torch' is enabled in the API server. This should ONLY be used for local development!
+(APIServer pid=50448) INFO 10-03 18:37:25 [factories.py:76] Scale-out endpoints are disabled. Set --enable-scale-out to enable them.
+(APIServer pid=50448) INFO 10-03 18:37:26 [hf.py:642] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=50448) WARNING 10-03 18:37:26 [model.py:1772] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'temperature': 0.7, 'top_k': 20, 'top_p': 0.8}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=50448) INFO 10-03 18:37:26 [entry.py:139] Starting vLLM server on http://127.0.0.1:8000
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:61] Available routes are:
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /openapi.json, Methods: GET, HEAD
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /docs, Methods: GET, HEAD
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /redoc, Methods: GET, HEAD
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /load, Methods: GET
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /version, Methods: GET
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /health, Methods: GET
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /metrics, Methods: GET
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /start_profile, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /stop_profile, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /tokenize, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /detokenize, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /v1/models, Methods: GET
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /ping, Methods: GET
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /ping, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /invocations, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /v1/responses, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /v1/completions, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /v1/messages, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /generative_scoring, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=50448) INFO 10-03 18:37:26 [launcher.py:70] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=50448) INFO:     Started server process [50448]
+(APIServer pid=50448) INFO:     Waiting for application startup.
+(APIServer pid=50448) INFO:     Application startup complete.
+(APIServer pid=50448) INFO:     127.0.0.1:59790 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:59798 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:59806 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:45436 - "POST /tokenize HTTP/1.1" 404 Not Found
+(APIServer pid=50448) INFO:     127.0.0.1:45446 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:45446 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO 10-03 18:37:59 [api_router.py:23] Starting profiler...
+(Worker_TP0 pid=50780) INFO 10-03 18:37:59 [wrapper.py:202] Torch profiling enabled. Traces will be saved to: /root/autodl-tmp/qwen3-moe-2x3090/runs/tp-nccl-profile-20261003T103620Z/traces
+ERROR: External init callback must run in same thread as registerClient (2004870720 != 1482298432)
+USDT:2026-10-03 18:37:59 50448:51986 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-10-03 18:37:59 50781:50781 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-10-03 18:37:59 50780:50780 SyncActivityProfilerHandler.cpp:52] profiler_start
+(APIServer pid=50448) INFO 10-03 18:37:59 [api_router.py:25] Profiler started.
+(APIServer pid=50448) INFO:     127.0.0.1:45446 - "POST /start_profile HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:45446 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:45446 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:45446 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:45446 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:45446 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:45446 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO 10-03 18:38:00 [api_router.py:31] Stopping profiler...
+USDT:2026-10-03 18:38:00 50448:51986 SyncActivityProfilerHandler.cpp:59] profiler_stop
+(APIServer pid=50448) 
+(APIServer pid=50448) 
+(APIServer pid=50448) INFO 10-03 18:38:00 [wrapper.py:82] Profiler stopped successfully.
+USDT:2026-10-03 18:38:00 50780:50780 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-10-03 18:38:00 50781:50781 SyncActivityProfilerHandler.cpp:59] profiler_stop
+(APIServer pid=50448) INFO 10-03 18:38:06 [loggers.py:315] Engine 000: Avg prompt throughput: 409.6 tokens/s, Avg generation throughput: 12.8 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(Worker_TP0 pid=50780) -------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+(Worker_TP0 pid=50780)                                                    Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg    # of Calls  
+(Worker_TP0 pid=50780) -------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+(Worker_TP0 pid=50780)                    execute_context_0(0)_generation_1(1)         0.00%       0.000us         0.00%       0.000us       0.000us     744.816ms        76.20%     744.816ms       6.007ms           124  
+(Worker_TP0 pid=50780)                 execute_context_1(1024)_generation_0(0)         0.00%       0.000us         0.00%       0.000us       0.000us     572.432ms        58.56%     572.432ms     286.216ms             2  
+(Worker_TP0 pid=50780)                         ## Call CompiledFxGraph None ##         0.00%       0.000us         0.00%       0.000us       0.000us     566.716ms        57.98%     566.716ms       5.783ms            98  
+(Worker_TP0 pid=50780) ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...         0.00%       0.000us         0.00%       0.000us       0.000us     483.544ms        49.47%     483.544ms      77.891us          6208  
+(Worker_TP0 pid=50780)                                        vllm::all_reduce         0.79%       8.819ms         1.30%      14.482ms      74.651us     420.645ms        43.03%     420.645ms       2.168ms           194  
+(Worker_TP0 pid=50780)                           _moe_C::moe_wna16_marlin_gemm         0.53%       5.870ms         1.41%      15.669ms      81.609us     101.047ms        10.34%     101.047ms     526.289us           192  
+(Worker_TP0 pid=50780) void marlin_moe_wna16::Marlin<1125899906909960l, 281...         0.00%       0.000us         0.00%       0.000us       0.000us     101.047ms        10.34%     101.047ms     526.289us           192  
+(Worker_TP0 pid=50780) void marlin_moe_wna16::Marlin<1125899906909960l, 281...         0.00%       0.000us         0.00%       0.000us       0.000us      95.764ms         9.80%      95.764ms      16.089us          5952  
+(Worker_TP0 pid=50780) void marlin::Marlin<1125899906909960l, 2814749767172...         0.00%       0.000us         0.00%       0.000us       0.000us      56.739ms         5.80%      56.739ms       9.533us          5952  
+(Worker_TP0 pid=50780) void flash::flash_fwd_splitkv_combine_kernel<Flash_f...         0.00%       0.000us         0.00%       0.000us       0.000us      37.295ms         3.82%      37.295ms      12.532us          2976  
+(Worker_TP0 pid=50780)                                         _C::marlin_gemm         0.58%       6.441ms         1.30%      14.482ms      75.428us      27.570ms         2.82%      27.570ms     143.592us           192  
+(Worker_TP0 pid=50780) void marlin::Marlin<1125899906909960l, 2814749767172...         0.00%       0.000us         0.00%       0.000us       0.000us      27.570ms         2.82%      27.570ms     143.592us           192  
+(Worker_TP0 pid=50780) void flash::flash_fwd_splitkv_kernel<Flash_fwd_kerne...         0.00%       0.000us         0.00%       0.000us       0.000us      27.282ms         2.79%      27.282ms       9.167us          2976  
+(Worker_TP0 pid=50780)                                                aten::mm         0.45%       5.062ms         0.65%       7.241ms      45.258us      24.875ms         2.54%      24.875ms     155.466us           160  
+(Worker_TP0 pid=50780) void cutlass::Kernel2<cutlass_80_tensorop_bf16_s1681...         0.00%       0.000us         0.00%       0.000us       0.000us      23.343ms         2.39%      23.343ms     364.740us            64  
+(Worker_TP0 pid=50780) void vllm::moe::topkGating<8, 128, 4, 16, 32, int, _...         0.00%       0.000us         0.00%       0.000us       0.000us      12.689ms         1.30%      12.689ms       4.130us          3072  
+(Worker_TP0 pid=50780)                                      triton_red_fused_2         0.00%       0.000us         0.00%       0.000us       0.000us      11.320ms         1.16%      11.320ms       3.763us          3008  
+(Worker_TP0 pid=50780) void vllm::moe::moe_align_block_size_kernel<int>(int...         0.00%       0.000us         0.00%       0.000us       0.000us      11.105ms         1.14%      11.105ms       3.615us          3072  
+(Worker_TP0 pid=50780)                                 _vllm_fa2_C::varlen_fwd         0.20%       2.244ms         0.47%       5.222ms      54.394us      10.541ms         1.08%      10.541ms     109.801us            96  
+(Worker_TP0 pid=50780) void flash::flash_fwd_splitkv_kernel<Flash_fwd_kerne...         0.00%       0.000us         0.00%       0.000us       0.000us      10.541ms         1.08%      10.541ms     109.801us            96  
+(Worker_TP0 pid=50780) void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, in...         0.00%       0.000us         0.00%       0.000us       0.000us      10.245ms         1.05%      10.245ms       3.335us          3072  
+(Worker_TP0 pid=50780)       triton_red_fused_fused_add_rms_norm_marlin_gemm_1         0.00%       0.000us         0.00%       0.000us       0.000us       8.679ms         0.89%       8.679ms       2.885us          3008  
+(Worker_TP0 pid=50780) std::enable_if<!(false), void>::type internal::gemvx...         0.00%       0.000us         0.00%       0.000us       0.000us       8.586ms         0.88%       8.586ms       2.885us          2976  
+(Worker_TP0 pid=50780)       triton_red_fused_fused_add_rms_norm_moe_forward_0         0.00%       0.000us         0.00%       0.000us       0.000us       7.987ms         0.82%       7.987ms       2.600us          3072  
+(Worker_TP0 pid=50780) void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bf...         0.00%       0.000us         0.00%       0.000us       0.000us       6.997ms         0.72%       6.997ms       2.278us          3072  
+(Worker_TP0 pid=50780)                                        vllm::all_gather         0.44%       4.904ms         0.72%       7.979ms     124.664us       6.870ms         0.70%       6.870ms     107.346us            64  
+(Worker_TP0 pid=50780) ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsSto...         0.00%       0.000us         0.00%       0.000us       0.000us       6.870ms         0.70%       6.870ms     107.346us            64  
+(Worker_TP0 pid=50780) void vllm::reshape_and_cache_flash_kernel<__nv_bfloa...         0.00%       0.000us         0.00%       0.000us       0.000us       6.366ms         0.65%       6.366ms       2.072us          3072  
+(Worker_TP0 pid=50780)                                         _moe_C::moe_sum         0.05%     545.397us         0.11%       1.189ms      12.383us       4.395ms         0.45%       4.395ms      45.784us            96  
+(Worker_TP0 pid=50780)                                          aten::_softmax         0.07%     802.561us         0.11%       1.233ms      19.263us       4.158ms         0.43%       4.158ms      64.967us            64  
+(Worker_TP0 pid=50780) void at::native::(anonymous namespace)::cunn_SoftMax...         0.00%       0.000us         0.00%       0.000us       0.000us       4.158ms         0.43%       4.158ms      64.967us            64  
+(Worker_TP0 pid=50780) void vllm::moe::count_and_sort_expert_tokens_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us       4.123ms         0.42%       4.123ms       1.342us          3072  
+(Worker_TP0 pid=50780) void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       3.228ms         0.33%       3.228ms       1.009us          3200  
+(Worker_TP0 pid=50780)                                           memcpy32_post         0.00%       0.000us         0.00%       0.000us       0.000us       3.085ms         0.32%       3.085ms       1.016us          3038  
+(Worker_TP0 pid=50780)       triton_red_fused_fused_add_rms_norm_marlin_gemm_1         0.17%       1.912ms         0.25%       2.757ms      29.328us       2.480ms         0.25%       2.480ms      26.388us            94  
+(Worker_TP0 pid=50780)                                        _C::silu_and_mul         0.07%     729.270us         0.13%       1.410ms      14.691us       2.119ms         0.22%       2.119ms      22.072us            96  
+(Worker_TP0 pid=50780)       triton_red_fused_fused_add_rms_norm_moe_forward_0         0.16%       1.790ms         0.23%       2.558ms      26.641us       1.995ms         0.20%       1.995ms      20.779us            96  
+(Worker_TP0 pid=50780)                                      triton_red_fused_2         0.17%       1.853ms         0.23%       2.583ms      27.482us       1.714ms         0.18%       1.714ms      18.229us            94  
+(Worker_TP0 pid=50780) void flashinfer::sampling::RadixTopKMaskLogitsKernel...         0.00%       0.000us         0.00%       0.000us       0.000us       1.606ms         0.16%       1.606ms      25.087us            64  
+(Worker_TP0 pid=50780) void flashinfer::sampling::TopPSamplingFromProbKerne...         0.00%       0.000us         0.00%       0.000us       0.000us       1.435ms         0.15%       1.435ms      22.415us            64  
+(Worker_TP0 pid=50780) ampere_bf16_s16816gemm_bf16_128x64_ldg8_f2f_stages_3...         0.00%       0.000us         0.00%       0.000us       0.000us       1.283ms         0.13%       1.283ms      13.360us            96  
+(Worker_TP0 pid=50780)                                             aten::index         0.57%       6.357ms         0.98%      10.909ms      34.091us       1.102ms         0.11%       1.102ms       3.444us           320  
+(Worker_TP0 pid=50780)                            _moe_C::moe_align_block_size         0.15%       1.685ms         0.41%       4.524ms      47.122us     928.076us         0.09%     928.076us       9.667us            96  
+(Worker_TP0 pid=50780)                                             aten::copy_         0.31%       3.431ms         0.67%       7.412ms      14.199us     668.767us         0.07%     668.767us       1.281us           522  
+(Worker_TP0 pid=50780)                                   cudaStreamIsCapturing         0.04%     473.611us         0.04%     475.861us       0.657us     649.377us         0.07%     649.377us       0.897us           724  
+(Worker_TP0 pid=50780) void at::native::index_elementwise_kernel<128, 4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     644.692us         0.07%     644.692us       3.358us           192  
+(Worker_TP0 pid=50780)                   _C_cache_ops::reshape_and_cache_flash         0.09%       1.043ms         0.18%       2.023ms      21.077us     577.205us         0.06%     577.205us       6.013us            96  
+(Worker_TP0 pid=50780)                                    _moe_C::topk_softmax         0.13%       1.402ms         0.27%       3.053ms      31.801us     510.141us         0.05%     510.141us       5.314us            96  
+(Worker_TP0 pid=50780)                                     _temperature_kernel         0.00%       0.000us         0.00%       0.000us       0.000us     507.422us         0.05%     507.422us       7.928us            64  
+(Worker_TP0 pid=50780)                                        cuLaunchKernelEx         0.56%       6.253ms         0.56%       6.253ms       8.685us     496.058us         0.05%     496.058us       0.689us           720  
+(Worker_TP0 pid=50780)                                             aten::fill_         0.21%       2.314ms         0.43%       4.759ms      11.385us     311.076us         0.03%     311.076us       0.744us           418  
+(Worker_TP0 pid=50780)                                      triton_red_fused_1         0.00%       0.000us         0.00%       0.000us       0.000us     263.118us         0.03%     263.118us       4.111us            64  
+(Worker_TP0 pid=50780) void at::native::index_elementwise_kernel<128, 4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     261.513us         0.03%     261.513us       4.086us            64  
+(Worker_TP0 pid=50780)                             _gather_block_tables_kernel         0.00%       0.000us         0.00%       0.000us       0.000us     250.535us         0.03%     250.535us       3.915us            64  
+(Worker_TP0 pid=50780) void cublasLt::splitKreduce_kernel<32, 16, int, __nv...         0.00%       0.000us         0.00%       0.000us       0.000us     248.623us         0.03%     248.623us       2.590us            96  
+(Worker_TP0 pid=50780)                                     _post_update_kernel         0.00%       0.000us         0.00%       0.000us       0.000us     229.870us         0.02%     229.870us       3.592us            64  
+(Worker_TP0 pid=50780)                _combine_sampled_and_draft_tokens_kernel         0.00%       0.000us         0.00%       0.000us       0.000us     215.755us         0.02%     215.755us       3.371us            64  
+(Worker_TP0 pid=50780)                    _get_num_sampled_and_rejected_kernel         0.00%       0.000us         0.00%       0.000us       0.000us     209.065us         0.02%     209.065us       3.267us            64  
+(Worker_TP0 pid=50780) void at::native::index_elementwise_kernel<128, 4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     195.782us         0.02%     195.782us       3.059us            64  
+(Worker_TP0 pid=50780) void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us     195.530us         0.02%     195.530us       3.055us            64  
+(Worker_TP0 pid=50780)                          Memcpy DtoH (Device -> Pinned)         0.00%       0.000us         0.00%       0.000us       0.000us     182.889us         0.02%     182.889us       1.429us           128  
+(Worker_TP0 pid=50780)                           _compute_slot_mappings_kernel         0.00%       0.000us         0.00%       0.000us       0.000us     174.922us         0.02%     174.922us       2.733us            64  
+(Worker_TP0 pid=50780)                          Memcpy HtoD (Pinned -> Device)         0.00%       0.000us         0.00%       0.000us       0.000us     172.422us         0.02%     172.422us       1.249us           138  
+(Worker_TP0 pid=50780)                   triton_red_fused_fused_add_rms_norm_1         0.00%       0.000us         0.00%       0.000us       0.000us     171.821us         0.02%     171.821us       2.685us            64  
+(Worker_TP0 pid=50780) void vllm::vocab_embedding::vocab_parallel_embedding...         0.00%       0.000us         0.00%       0.000us       0.000us     161.861us         0.02%     161.861us       2.529us            64  
+(Worker_TP0 pid=50780)                                cudaEventRecordWithFlags         0.08%     844.867us         0.08%     844.867us       2.144us     155.975us         0.02%     155.975us       0.396us           394  
+(Worker_TP0 pid=50780)                 triton_red_fused_marlin_gemm_rms_norm_0         0.00%       0.000us         0.00%       0.000us       0.000us     123.977us         0.01%     123.977us       1.937us            64  
+(Worker_TP0 pid=50780) void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us     117.926us         0.01%     117.926us       1.843us            64  
+(Worker_TP0 pid=50780)                            _prepare_pos_seq_lens_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      93.093us         0.01%      93.093us       1.455us            64  
+(Worker_TP0 pid=50780) void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      72.129us         0.01%      72.129us       1.127us            64  
+(Worker_TP0 pid=50780)                                            aten::arange         0.08%     869.589us         0.34%       3.790ms      29.610us      66.150us         0.01%     132.300us       1.034us           128  
+(Worker_TP0 pid=50780) void (anonymous namespace)::elementwise_kernel_with_...         0.00%       0.000us         0.00%       0.000us       0.000us      66.150us         0.01%      66.150us       1.034us            64  
+(Worker_TP0 pid=50780)                                     _apply_write_kernel         0.00%       0.000us         0.00%       0.000us       0.000us      49.122us         0.01%      49.122us       4.094us            12  
+(Worker_TP0 pid=50780)                   triton_red_fused_fused_add_rms_norm_1         0.00%      38.462us         0.01%      57.932us      28.966us      39.714us         0.00%      39.714us      19.857us             2  
+(Worker_TP0 pid=50780)                                      triton_red_fused_1         0.00%      54.693us         0.01%      74.024us      37.012us      38.178us         0.00%      38.178us      19.089us             2  
+(Worker_TP0 pid=50780)                            _C::vocab_parallel_embedding         0.01%      58.363us         0.01%      88.654us      44.327us      17.056us         0.00%      17.056us       8.528us             2  
+(Worker_TP0 pid=50780)                 triton_red_fused_marlin_gemm_rms_norm_0         0.01%      83.566us         0.01%     103.366us      51.683us      15.713us         0.00%      15.713us       7.856us             2  
+(Worker_TP0 pid=50780)                          _prepare_prefill_inputs_kernel         0.00%       0.000us         0.00%       0.000us       0.000us       8.448us         0.00%       8.448us       4.224us             2  
+(Worker_TP0 pid=50780)                                  cudaDeviceGetAttribute         0.08%     840.393us         0.08%     840.393us       0.410us       3.584us         0.00%       3.584us       0.002us          2048  
+(Worker_TP0 pid=50780)                                    cudaFuncSetAttribute         0.12%       1.390ms         0.12%       1.390ms       2.287us       3.136us         0.00%       3.136us       0.005us           608  
+(Worker_TP0 pid=50780)                                cudaStreamGetCaptureInfo         0.04%     463.370us         0.04%     463.370us       0.654us       3.072us         0.00%       3.072us       0.004us           708  
+(Worker_TP0 pid=50780)                                         cudaGraphLaunch         7.94%      88.300ms         8.34%      92.767ms       1.496ms       2.401us         0.00%       2.401us       0.039us            62  
+(Worker_TP0 pid=50780)                                    cudaEventSynchronize        55.93%     622.255ms        70.63%     785.913ms      12.280ms       1.344us         0.00%      35.581ms     555.961us            64  
+(Worker_TP0 pid=50780)                 execute_context_1(1024)_generation_0(0)         1.74%      19.386ms        16.46%     183.185ms      91.592ms       0.000us         0.00%     576.437ms     288.219ms             2  
+(Worker_TP0 pid=50780)                                            aten::select         0.09%     968.524us         0.11%       1.189ms       4.610us       0.000us         0.00%       0.000us       0.000us           258  
+(Worker_TP0 pid=50780)                                        aten::as_strided         0.35%       3.854ms         0.35%       3.854ms       0.829us       0.000us         0.00%       0.000us       0.000us          4650  
+(Worker_TP0 pid=50780)                                             aten::zero_         0.05%     551.729us         0.25%       2.756ms      17.015us       0.000us         0.00%     171.621us       1.059us           162  
+(Worker_TP0 pid=50780)                                             aten::slice         0.94%      10.446ms         1.15%      12.759ms       3.788us       0.000us         0.00%       0.000us       0.000us          3368  
+(Worker_TP0 pid=50780)                                             aten::empty         1.78%      19.841ms         1.93%      21.442ms       5.263us       0.000us         0.00%       0.000us       0.000us          4074  
+(Worker_TP0 pid=50780)                                 Activity Buffer Request         0.83%       9.215ms         0.89%       9.955ms       1.659ms       0.000us         0.00%     574.620us      95.770us             6  
+(Worker_TP0 pid=50780)                                          cudaEventQuery         0.12%       1.286ms         0.12%       1.286ms       1.675us       0.000us         0.00%       0.000us       0.000us           768  
+(Worker_TP0 pid=50780)                                                aten::to         0.07%     763.826us         0.79%       8.743ms      13.247us       0.000us         0.00%     392.945us       0.595us           660  
+(Worker_TP0 pid=50780)                                        aten::lift_fresh         0.01%     112.795us         0.01%     112.795us       0.286us       0.000us         0.00%       0.000us       0.000us           394  
+(Worker_TP0 pid=50780)                                           aten::detach_         0.00%      20.280us         0.00%      20.280us       0.274us       0.000us         0.00%       0.000us       0.000us            74  
+(Worker_TP0 pid=50780)                                          aten::_to_copy         0.13%       1.397ms         0.72%       7.980ms      29.998us       0.000us         0.00%     392.945us       1.477us           266  
+(Worker_TP0 pid=50780)                                     aten::empty_strided         0.51%       5.683ms         0.53%       5.903ms       6.994us       0.000us         0.00%       0.000us       0.000us           844  
+(Worker_TP0 pid=50780)                                         cudaMemcpyAsync         0.24%       2.670ms         0.24%       2.670ms      10.038us       0.000us         0.00%       0.000us       0.000us           266  
+(Worker_TP0 pid=50780)                                        cudaLaunchKernel         1.74%      19.347ms         1.74%      19.362ms       9.022us       0.000us         0.00%       0.000us       0.000us          2146  
+(Worker_TP0 pid=50780)                                         aten::is_pinned         0.05%     575.301us         0.09%       1.014ms       7.922us       0.000us         0.00%       0.000us       0.000us           128  
+(Worker_TP0 pid=50780)                                cudaPointerGetAttributes         0.04%     436.138us         0.04%     436.138us       3.407us       0.000us         0.00%       0.000us       0.000us           128  
+(Worker_TP0 pid=50780) -------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+(Worker_TP0 pid=50780) Self CPU time total: 1.113s
+(Worker_TP0 pid=50780) Self CUDA time total: 977.502ms
+(Worker_TP0 pid=50780) 
+(Worker_TP0 pid=50780) INFO 10-03 18:38:11 [wrapper.py:82] Profiler stopped successfully.
+(APIServer pid=50448) INFO 10-03 18:38:11 [api_router.py:33] Profiler stopped.
+(APIServer pid=50448) INFO:     127.0.0.1:45446 - "POST /stop_profile HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:54310 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO 10-03 18:38:16 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(APIServer pid=50448) INFO:     127.0.0.1:58310 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:58314 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:58330 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42252 - "POST /tokenize HTTP/1.1" 404 Not Found
+(APIServer pid=50448) INFO:     127.0.0.1:42260 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42272 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO 10-03 18:44:59 [api_router.py:23] Starting profiler...
+(APIServer pid=50448) /root/venvs/qwen3-moe/lib/python3.12/site-packages/torch/profiler/profiler.py:300: UserWarning: Warning: Profiler clears events at the end of each cycle. Only events from the current cycle will be reported. To keep events across cycles, set acc_events=True.
+(APIServer pid=50448)   _warn_once(
+(Worker_TP1 pid=50781) /root/venvs/qwen3-moe/lib/python3.12/site-packages/torch/profiler/profiler.py:300: UserWarning: Warning: Profiler clears events at the end of each cycle. Only events from the current cycle will be reported. To keep events across cycles, set acc_events=True.
+(Worker_TP1 pid=50781)   _warn_once(
+(Worker_TP0 pid=50780) /root/venvs/qwen3-moe/lib/python3.12/site-packages/torch/profiler/profiler.py:300: UserWarning: Warning: Profiler clears events at the end of each cycle. Only events from the current cycle will be reported. To keep events across cycles, set acc_events=True.
+(Worker_TP0 pid=50780)   _warn_once(
+USDT:2026-10-03 18:44:59 50448:51986 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-10-03 18:45:00 50781:50781 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-10-03 18:45:00 50780:50780 SyncActivityProfilerHandler.cpp:52] profiler_start
+(APIServer pid=50448) INFO 10-03 18:45:00 [api_router.py:25] Profiler started.
+(APIServer pid=50448) INFO:     127.0.0.1:42260 - "POST /start_profile HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42272 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42260 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42272 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42260 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42278 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42288 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42292 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42302 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42318 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42326 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42272 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:42260 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO 10-03 18:45:02 [api_router.py:31] Stopping profiler...
+USDT:2026-10-03 18:45:02 50448:51986 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-10-03 18:45:02 50780:50780 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-10-03 18:45:02 50781:50781 SyncActivityProfilerHandler.cpp:59] profiler_stop
+(APIServer pid=50448) 
+(APIServer pid=50448) 
+(APIServer pid=50448) INFO 10-03 18:45:06 [loggers.py:315] Engine 000: Avg prompt throughput: 1024.0 tokens/s, Avg generation throughput: 32.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(Worker_TP0 pid=50780) -------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+(Worker_TP0 pid=50780)                                                    Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg    # of Calls  
+(Worker_TP0 pid=50780) -------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+(Worker_TP0 pid=50780)                         ## Call CompiledFxGraph None ##         0.00%       0.000us         0.00%       0.000us       0.000us        2.005s        82.40%        2.005s       8.183ms           245  
+(Worker_TP0 pid=50780) ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKern...         0.00%       0.000us         0.00%       0.000us       0.000us        1.543s        63.42%        1.543s     429.913us          3589  
+(Worker_TP0 pid=50780)                                        vllm::all_reduce         0.68%      22.486ms         1.55%      50.914ms     104.977us        1.458s        59.91%        1.794s       3.699ms           485  
+(Worker_TP0 pid=50780)                    execute_context_0(0)_generation_8(8)         0.00%       0.000us         0.00%       0.000us       0.000us     576.704ms        23.70%     576.704ms      11.090ms            52  
+(Worker_TP0 pid=50780)                 execute_context_3(2046)_generation_2(2)         0.00%       0.000us         0.00%       0.000us       0.000us     495.039ms        20.35%     495.039ms     495.039ms             1  
+(Worker_TP0 pid=50780)                 execute_context_2(2047)_generation_1(1)         0.00%       0.000us         0.00%       0.000us       0.000us     486.192ms        19.98%     486.192ms     486.192ms             1  
+(Worker_TP0 pid=50780)                 execute_context_3(2044)_generation_4(4)         0.00%       0.000us         0.00%       0.000us       0.000us     479.849ms        19.72%     479.849ms     479.849ms             1  
+(Worker_TP0 pid=50780)                                     Command Buffer Full        31.13%        1.024s        31.13%        1.024s       1.068ms     403.203ms        16.57%     403.203ms     420.441us           959  
+(Worker_TP0 pid=50780)                           _moe_C::moe_wna16_marlin_gemm         0.46%      15.068ms         2.82%      92.769ms     193.268us     372.264ms        15.30%     387.208ms     806.684us           480  
+(Worker_TP0 pid=50780) void marlin_moe_wna16::Marlin<1125899906909960l, 281...         0.00%       0.000us         0.00%       0.000us       0.000us     372.264ms        15.30%     372.264ms     775.550us           480  
+(Worker_TP0 pid=50780)                 execute_context_2(1031)_generation_6(6)         0.00%       0.000us         0.00%       0.000us       0.000us     278.738ms        11.46%     278.738ms     278.738ms             1  
+(Worker_TP0 pid=50780)                 execute_context_1(1024)_generation_0(0)         0.00%       0.000us         0.00%       0.000us       0.000us     276.546ms        11.37%     276.546ms     276.546ms             1  
+(Worker_TP0 pid=50780) void marlin_moe_wna16::Marlin<1125899906909960l, 281...         0.00%       0.000us         0.00%       0.000us       0.000us     132.456ms         5.44%     132.456ms      43.117us          3072  
+(Worker_TP0 pid=50780)                                         _C::marlin_gemm         0.50%      16.364ms        11.33%     372.783ms     776.630us     108.121ms         4.44%     141.878ms     295.579us           480  
+(Worker_TP0 pid=50780) void marlin::Marlin<1125899906909960l, 2814749767172...         0.00%       0.000us         0.00%       0.000us       0.000us     106.972ms         4.40%     106.972ms     222.857us           480  
+(Worker_TP0 pid=50780)                                 _vllm_fa2_C::varlen_fwd         0.18%       5.855ms         0.53%      17.283ms      72.011us      45.503ms         1.87%      48.029ms     200.123us           240  
+(Worker_TP0 pid=50780) void flash::flash_fwd_splitkv_kernel<Flash_fwd_kerne...         0.00%       0.000us         0.00%       0.000us       0.000us      45.503ms         1.87%      45.503ms     189.597us           240  
+(Worker_TP0 pid=50780)                    execute_context_0(0)_generation_7(7)         0.00%       0.000us         0.00%       0.000us       0.000us      41.874ms         1.72%      41.874ms      10.468ms             4  
+(Worker_TP0 pid=50780) void marlin::Marlin<1125899906909960l, 2814749767172...         0.00%       0.000us         0.00%       0.000us       0.000us      29.652ms         1.22%      29.652ms       9.652us          3072  
+(Worker_TP0 pid=50780) void flash::flash_fwd_splitkv_kernel<Flash_fwd_kerne...         0.00%       0.000us         0.00%       0.000us       0.000us      29.397ms         1.21%      29.397ms      19.139us          1536  
+(Worker_TP0 pid=50780)                                        vllm::all_gather         0.10%       3.155ms         0.20%       6.453ms     174.396us      26.353ms         1.08%      26.550ms     717.572us            37  
+(Worker_TP0 pid=50780) ncclDevKernel_AllGather_RING_LL(ncclDevKernelArgsSto...         0.00%       0.000us         0.00%       0.000us       0.000us      26.353ms         1.08%      26.353ms     712.231us            37  
+(Worker_TP0 pid=50780)                                                aten::mm         0.26%       8.612ms         2.33%      76.745ms     277.058us      20.719ms         0.85%      24.068ms      86.888us           277  
+(Worker_TP0 pid=50780) void vllm::moe::moe_sum_vec_kernel<c10::BFloat16, in...         0.00%       0.000us         0.00%       0.000us       0.000us      20.624ms         0.85%      20.624ms      11.612us          1776  
+(Worker_TP0 pid=50780)                    execute_context_0(0)_generation_6(6)         0.00%       0.000us         0.00%       0.000us       0.000us      19.890ms         0.82%      19.890ms       9.945ms             2  
+(Worker_TP0 pid=50780)                                         _moe_C::moe_sum         0.04%       1.397ms         0.93%      30.433ms     126.806us      17.307ms         0.71%      18.239ms      75.997us           240  
+(Worker_TP0 pid=50780)                    execute_context_0(0)_generation_4(4)         0.00%       0.000us         0.00%       0.000us       0.000us      17.002ms         0.70%      17.002ms       8.501ms             2  
+(Worker_TP0 pid=50780)                    execute_context_0(0)_generation_2(2)         0.00%       0.000us         0.00%       0.000us       0.000us      14.270ms         0.59%      14.270ms       7.135ms             2  
+(Worker_TP0 pid=50780)       triton_red_fused_fused_add_rms_norm_marlin_gemm_1         0.00%       0.000us         0.00%       0.000us       0.000us      14.031ms         0.58%      14.031ms       8.069us          1739  
+(Worker_TP0 pid=50780) ampere_bf16_s16816gemm_bf16_64x64_ldg8_f2f_stages_64...         0.00%       0.000us         0.00%       0.000us       0.000us      12.937ms         0.53%      12.937ms     369.623us            35  
+(Worker_TP0 pid=50780)       triton_red_fused_fused_add_rms_norm_moe_forward_0         0.00%       0.000us         0.00%       0.000us       0.000us      11.836ms         0.49%      11.836ms       6.664us          1776  
+(Worker_TP0 pid=50780)                    execute_context_0(0)_generation_1(1)         0.00%       0.000us         0.00%       0.000us       0.000us      11.713ms         0.48%      11.713ms       5.856ms             2  
+(Worker_TP0 pid=50780)                                      triton_red_fused_2         0.00%       0.000us         0.00%       0.000us       0.000us      11.325ms         0.47%      11.325ms       6.513us          1739  
+(Worker_TP0 pid=50780) void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bf...         0.00%       0.000us         0.00%       0.000us       0.000us      11.294ms         0.46%      11.294ms       6.359us          1776  
+(Worker_TP0 pid=50780)       triton_red_fused_fused_add_rms_norm_marlin_gemm_1         0.16%       5.232ms         1.36%      44.647ms     189.988us      10.433ms         0.43%      14.643ms      62.310us           235  
+(Worker_TP0 pid=50780)                                        _C::silu_and_mul         0.06%       2.082ms         0.64%      21.057ms      87.739us       8.619ms         0.35%      12.341ms      51.422us           240  
+(Worker_TP0 pid=50780)       triton_red_fused_fused_add_rms_norm_moe_forward_0         0.14%       4.503ms         0.97%      31.798ms     132.494us       8.380ms         0.34%       8.669ms      36.121us           240  
+(Worker_TP0 pid=50780) void vllm::moe::topkGating<8, 128, 4, 16, 32, int, _...         0.00%       0.000us         0.00%       0.000us       0.000us       8.110ms         0.33%       8.110ms       4.566us          1776  
+(Worker_TP0 pid=50780) void flash::flash_fwd_splitkv_combine_kernel<Flash_f...         0.00%       0.000us         0.00%       0.000us       0.000us       7.550ms         0.31%       7.550ms       5.243us          1440  
+(Worker_TP0 pid=50780) void vllm::moe::moe_align_block_size_kernel<int>(int...         0.00%       0.000us         0.00%       0.000us       0.000us       7.008ms         0.29%       7.008ms       3.946us          1776  
+(Worker_TP0 pid=50780)                                      triton_red_fused_2         0.15%       4.786ms         0.99%      32.433ms     138.014us       6.377ms         0.26%       6.620ms      28.168us           235  
+(Worker_TP0 pid=50780) void at::native::elementwise_kernel<128, 4, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us       6.141ms         0.25%       6.141ms       2.040us          3011  
+(Worker_TP0 pid=50780) ampere_bf16_s16816gemm_bf16_64x128_ldg8_f2f_stages_6...         0.00%       0.000us         0.00%       0.000us       0.000us       5.519ms         0.23%       5.519ms      38.325us           144  
+(Worker_TP0 pid=50780) void vllm::reshape_and_cache_flash_kernel<__nv_bfloa...         0.00%       0.000us         0.00%       0.000us       0.000us       4.860ms         0.20%       4.860ms       2.737us          1776  
+(Worker_TP0 pid=50780) void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_...         0.00%       0.000us         0.00%       0.000us       0.000us       4.582ms         0.19%       4.582ms       3.291us          1392  
+(Worker_TP0 pid=50780) void vllm::moe::count_and_sort_expert_tokens_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us       3.368ms         0.14%       3.368ms       1.897us          1776  
+(Worker_TP0 pid=50780)                            _moe_C::moe_align_block_size         0.13%       4.246ms         2.45%      80.531ms     335.544us       2.985ms         0.12%       5.381ms      22.419us           240  
+(Worker_TP0 pid=50780)                                          aten::_softmax         0.01%     485.539us         0.27%       8.878ms     239.939us       2.540ms         0.10%       2.673ms      72.250us            37  
+(Worker_TP0 pid=50780) void at::native::(anonymous namespace)::cunn_SoftMax...         0.00%       0.000us         0.00%       0.000us       0.000us       2.540ms         0.10%       2.540ms      68.647us            37  
+(Worker_TP0 pid=50780) void cublasLt::splitKreduce_kernel<32, 16, int, __nv...         0.00%       0.000us         0.00%       0.000us       0.000us       2.497ms         0.10%       2.497ms       1.577us          1584  
+(Worker_TP0 pid=50780) void flashinfer::sampling::TopPSamplingFromProbKerne...         0.00%       0.000us         0.00%       0.000us       0.000us       2.012ms         0.08%       2.012ms      54.370us            37  
+(Worker_TP0 pid=50780)                   _C_cache_ops::reshape_and_cache_flash         0.08%       2.669ms         0.90%      29.641ms     123.506us       1.889ms         0.08%       1.968ms       8.200us           240  
+(Worker_TP0 pid=50780) void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       1.884ms         0.08%       1.884ms       1.019us          1850  
+(Worker_TP0 pid=50780)                                    _moe_C::topk_softmax         0.11%       3.532ms         0.88%      29.007ms     120.865us       1.458ms         0.06%       1.527ms       6.364us           240  
+(Worker_TP0 pid=50780) ampere_bf16_s16816gemm_bf16_128x64_ldg8_f2f_stages_3...         0.00%       0.000us         0.00%       0.000us       0.000us       1.277ms         0.05%       1.277ms      13.303us            96  
+(Worker_TP0 pid=50780) void marlin::Marlin<1125899906909960l, 2814749767172...         0.00%       0.000us         0.00%       0.000us       0.000us       1.149ms         0.05%       1.149ms      11.969us            96  
+(Worker_TP0 pid=50780) void flashinfer::sampling::RadixTopKMaskLogitsKernel...         0.00%       0.000us         0.00%       0.000us       0.000us       1.134ms         0.05%       1.134ms      30.659us            37  
+(Worker_TP0 pid=50780)                                             aten::copy_         0.08%       2.598ms         0.19%       6.108ms      17.302us     778.387us         0.03%     784.147us       2.221us           353  
+(Worker_TP0 pid=50780)                                     _temperature_kernel         0.00%       0.000us         0.00%       0.000us       0.000us     742.003us         0.03%     742.003us      20.054us            37  
+(Worker_TP0 pid=50780) void cutlass::Kernel2<cutlass_80_tensorop_bf16_s1681...         0.00%       0.000us         0.00%       0.000us       0.000us     733.070us         0.03%     733.070us     366.535us             2  
+(Worker_TP0 pid=50780) void flash::flash_fwd_splitkv_combine_kernel<Flash_f...         0.00%       0.000us         0.00%       0.000us       0.000us     596.395us         0.02%     596.395us      12.425us            48  
+(Worker_TP0 pid=50780)                                             aten::index         0.12%       3.789ms         0.49%      15.960ms      86.269us     556.577us         0.02%     570.689us       3.085us           185  
+(Worker_TP0 pid=50780) void flash::flash_fwd_splitkv_combine_kernel<Flash_f...         0.00%       0.000us         0.00%       0.000us       0.000us     386.693us         0.02%     386.693us       8.056us            48  
+(Worker_TP0 pid=50780)                                             aten::fill_         0.09%       2.929ms         8.56%     281.528ms     650.181us     386.116us         0.02%     483.241us       1.116us           433  
+(Worker_TP0 pid=50780) void at::native::index_elementwise_kernel<128, 4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     374.240us         0.02%     374.240us       3.372us           111  
+(Worker_TP0 pid=50780) void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us     299.623us         0.01%     299.623us       8.098us            37  
+(Worker_TP0 pid=50780) void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_...         0.00%       0.000us         0.00%       0.000us       0.000us     295.432us         0.01%     295.432us       3.077us            96  
+(Worker_TP0 pid=50780)                                      triton_red_fused_1         0.00%       0.000us         0.00%       0.000us       0.000us     267.176us         0.01%     267.176us       7.221us            37  
+(Worker_TP0 pid=50780)                   triton_red_fused_fused_add_rms_norm_1         0.00%       0.000us         0.00%       0.000us       0.000us     239.750us         0.01%     239.750us       6.480us            37  
+(Worker_TP0 pid=50780)                             _gather_block_tables_kernel         0.00%       0.000us         0.00%       0.000us       0.000us     182.272us         0.01%     182.272us       4.926us            37  
+(Worker_TP0 pid=50780)                   triton_red_fused_fused_add_rms_norm_1         0.00%      94.231us         0.01%     490.728us      98.146us     164.740us         0.01%     248.358us      49.672us             5  
+(APIServer pid=50448) INFO 10-03 18:45:16 [api_router.py:33] Profiler stopped.
+(APIServer pid=50448) INFO:     127.0.0.1:42278 - "POST /stop_profile HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO:     127.0.0.1:59270 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=50448) INFO 10-03 18:45:16 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
